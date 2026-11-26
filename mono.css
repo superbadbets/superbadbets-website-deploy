@@ -1,42 +1,120 @@
 :root {
   color-scheme: light;
-  background: #f8f5ed;
-  color: #28251e;
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
+  --paper: #f8f5ed;
+  --ink: #121613;
+  --green: #a9c6bb;
+  --green-ink: color-mix(in srgb, var(--ink) 63%, var(--green));
+  --rule: color-mix(in srgb, var(--ink) 18%, transparent);
+  --quiet: color-mix(in srgb, var(--ink) 74%, var(--paper));
+  --sans: system-ui, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
 }
 
 body {
-  margin: 0;
-  padding: clamp(5rem, 32svh, 19rem) clamp(1.5rem, 6vw, 4rem) 3rem;
+  box-sizing: border-box;
+  max-inline-size: 87rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 4rem) 3rem;
 }
 
-.page {
-  max-inline-size: 35rem;
-  margin-inline: auto;
-}
-
-.page h1 {
-  margin: 0;
-  font-size: clamp(2.25rem, 5vw, 3.25rem);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-  overflow-wrap: anywhere;
-}
-
-.page h1::before {
-  content: "";
-  display: block;
-  inline-size: 2.5rem;
-  margin-block-end: 1.5rem;
-  border-block-start: 1px solid #aba28f;
-}
-
-.page p {
-  max-inline-size: 34em;
-  margin-block: 1rem 0;
-  color: #625b4c;
+.masthead {
+  padding-block: 1.3rem 1.1rem;
+  border-block-end: 1px solid var(--rule);
   font-size: 1.125rem;
-  line-height: 1.6;
+}
+
+.intro {
+  display: grid;
+  align-items: end;
+  gap: 1rem 3rem;
+  padding-block: clamp(2.2rem, 5vw, 4.8rem) clamp(1.1rem, 2vw, 1.75rem);
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(2.9rem, 6vw, 6rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.intro p {
+  max-inline-size: 33rem;
+  margin: 0;
+  color: var(--quiet);
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.intro p + p {
+  margin-block-start: 1rem;
+}
+
+.intro a {
+  color: var(--green-ink);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.intro a:hover {
+  color: var(--ink);
+}
+
+.atlas-stage {
+  position: relative;
+  min-inline-size: 0;
+  block-size: 27.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.atlas-canvas,
+.atlas-nodes {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.atlas-nodes {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.atlas-stage[data-ready] .atlas-nodes {
+  visibility: visible;
+}
+
+.atlas-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0.22rem 0.3rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 0.75rem/1.25 var(--sans);
+  white-space: nowrap;
+}
+
+@media (min-width: 64rem) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  }
+
+  .atlas-stage {
+    block-size: clamp(27.5rem, 37vw, 34rem);
+  }
+}
+
+@media (max-height: 48rem) {
+  .intro {
+    padding-block: clamp(1.75rem, 4vh, 2.5rem) 0.75rem;
+  }
+
+  .atlas-stage {
+    block-size: clamp(18.75rem, 50vh, 26rem);
+  }
 }
