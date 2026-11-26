@@ -1,105 +1,42 @@
 :root {
   color-scheme: light;
-  --paper: #f8f8f6;
-  --ink: #181818;
-  --rule: #bcbcb8;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: system-ui, sans-serif;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
+  background: #f8f5ed;
+  color: #28251e;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
 }
 
 body {
-  min-block-size: 100vh;
-  min-block-size: 100svh;
   margin: 0;
-  display: grid;
-  place-items: center;
-  padding: clamp(1.5rem, 7vw, 6rem);
+  padding: clamp(5rem, 32svh, 19rem) clamp(1.5rem, 6vw, 4rem) 3rem;
 }
 
 .page {
-  inline-size: min(100%, 69rem);
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  align-items: center;
-  gap: clamp(2rem, 7vw, 7rem);
-  border-block: 1px solid var(--rule);
-  padding-block: clamp(4.5rem, 12vh, 9rem);
+  max-inline-size: 35rem;
+  margin-inline: auto;
 }
 
-h1 {
+.page h1 {
   margin: 0;
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
-  font-size: clamp(2.65rem, 6.1vw, 6rem);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
   font-weight: 400;
-  line-height: 0.99;
-  letter-spacing: -0.045em;
-  overflow-wrap: break-word;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
-.copy p {
-  margin: 1.5rem 0 0;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.55;
-  letter-spacing: 0.025em;
-}
-
-.mark {
-  position: relative;
-  display: grid;
-  place-items: center;
-  justify-self: center;
-  inline-size: clamp(8rem, 24vw, 19rem);
-  aspect-ratio: 1;
-}
-
-.mark::before {
+.page h1::before {
   content: "";
-  position: absolute;
-  inset: -1rem auto;
-  inline-size: 1px;
-  background: var(--rule);
-}
-
-.mark span {
-  position: relative;
   display: block;
-  inline-size: 100%;
-  aspect-ratio: 1;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-  background: linear-gradient(90deg, var(--ink) 50%, var(--paper) 50%);
+  inline-size: 2.5rem;
+  margin-block-end: 1.5rem;
+  border-block-start: 1px solid #aba28f;
 }
 
-.mark span::before {
-  content: "";
-  position: absolute;
-  inset: 25%;
-  border-radius: 50%;
-  border: 1px solid var(--ink);
-  background: linear-gradient(90deg, var(--paper) 50%, var(--ink) 50%);
-}
-
-@media (max-width: 48rem) {
-  .page {
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: start;
-    gap: clamp(3.5rem, 8vh, 5.5rem);
-    padding-block: clamp(3rem, 7.5vh, 5rem);
-  }
-
-  h1 {
-    max-inline-size: 8em;
-    font-size: clamp(2.45rem, 9.5vw, 4.8rem);
-  }
-
-  .mark {
-    justify-self: end;
-    inline-size: clamp(7.5rem, 34vw, 13rem);
-    margin-inline-end: 1px;
-  }
+.page p {
+  max-inline-size: 34em;
+  margin-block: 1rem 0;
+  color: #625b4c;
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
