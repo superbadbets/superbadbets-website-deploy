@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Fraunces";
+  src: url("fonts/fraunces-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --paper: #f8f5ed;
@@ -6,11 +22,13 @@
   --green-ink: color-mix(in srgb, var(--ink) 63%, var(--green));
   --rule: color-mix(in srgb, var(--ink) 18%, transparent);
   --quiet: color-mix(in srgb, var(--ink) 74%, var(--paper));
-  --sans: system-ui, sans-serif;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --serif: "Fraunces", Georgia, serif;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
+  font-optical-sizing: auto;
+  font-synthesis: none;
 }
 
 body {
@@ -23,22 +41,25 @@ body {
 .masthead {
   padding-block: 1.3rem 1.1rem;
   border-block-end: 1px solid var(--rule);
-  font-size: 1.125rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 .intro {
   display: grid;
   align-items: end;
-  gap: 1rem 3rem;
+  gap: 1.4rem 3rem;
   padding-block: clamp(2.2rem, 5vw, 4.8rem) clamp(1.1rem, 2vw, 1.75rem);
 }
 
 .intro h1 {
   margin: 0;
-  font-size: clamp(2.9rem, 6vw, 6rem);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-family: var(--serif);
+  font-size: clamp(3.25rem, 7vw, 6.6rem);
+  font-weight: 500;
+  line-height: 0.91;
+  letter-spacing: -0.038em;
   text-wrap: balance;
 }
 
@@ -46,8 +67,8 @@ body {
   max-inline-size: 33rem;
   margin: 0;
   color: var(--quiet);
-  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
-  line-height: 1.55;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.65;
 }
 
 .intro p + p {
@@ -56,6 +77,8 @@ body {
 
 .intro a {
   color: var(--green-ink);
+  font-size: 0.9em;
+  font-weight: 550;
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 }
@@ -64,39 +87,152 @@ body {
   color: var(--ink);
 }
 
+.atlas {
+  margin: 0;
+}
+
 .atlas-stage {
+  display: none;
   position: relative;
   min-inline-size: 0;
-  block-size: 27.5rem;
+  --plot-height: clamp(12rem, 39vw, 25rem);
+  --flow-height: 106px;
+  block-size: calc(var(--plot-height) + var(--flow-height));
   overflow: hidden;
-  isolation: isolate;
+}
+
+.atlas-stage[data-ready] {
+  display: block;
 }
 
 .atlas-canvas,
-.atlas-nodes {
+.atlas-legend {
   position: absolute;
   inset: 0;
   inline-size: 100%;
   block-size: 100%;
 }
 
-.atlas-nodes {
-  visibility: hidden;
+.atlas-legend {
   pointer-events: none;
 }
 
-.atlas-stage[data-ready] .atlas-nodes {
-  visibility: visible;
-}
-
-.atlas-node {
+.atlas-legend span {
   position: absolute;
   transform: translate(-50%, -50%);
-  padding: 0.22rem 0.3rem;
-  background: var(--paper);
   color: var(--ink);
-  font: 500 0.75rem/1.25 var(--sans);
+  font-size: clamp(0.88rem, 2.5vw, 1.14rem);
   white-space: nowrap;
+}
+
+.atlas-legend .atlas-mean {
+  color: var(--green-ink);
+}
+
+.atlas-flow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.atlas-flow > div {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 0.2rem;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+}
+
+.atlas-flow math {
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+}
+
+.atlas-flow span {
+  color: var(--quiet);
+  font-size: clamp(0.66rem, 1.6vw, 0.81rem);
+  white-space: nowrap;
+}
+
+.atlas-caption {
+  display: grid;
+  justify-items: center;
+  padding-block: 0.25rem 1.5rem;
+}
+
+.atlas-caption p,
+.transmission p {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  max-inline-size: 39rem;
+  color: var(--quiet);
+  line-height: 1.5;
+}
+
+.atlas-caption > p {
+  text-align: center;
+}
+
+.capacity-equations {
+  font-size: clamp(1.2rem, 3.8vw, 1.6rem);
+}
+
+.capacity-equations mtd {
+  padding-block: 0.3rem;
+}
+
+.transmission {
+  display: grid;
+  width: min(100%, 66rem);
+  margin-block: clamp(2rem, 5vw, 3.9rem) 0.85rem;
+  padding: 0;
+  list-style: none;
+}
+
+.transmission li {
+  min-width: 0;
+  padding: 1.2rem 1.35rem 1.35rem;
+  border-block-start: 1px solid var(--rule);
+}
+
+.transmission h2 {
+  margin: 0 0 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.transmission math[display="block"] {
+  font-size: clamp(1.14rem, 2.3vw, 1.32rem);
+  text-align: left;
+}
+
+.transmission mtd {
+  padding: 0.38rem 0;
+}
+
+.transmission .lag {
+  color: var(--green-ink);
+}
+
+@media (min-width: 57rem) {
+  .transmission {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .transmission li + li {
+    border-inline-start: 1px solid var(--rule);
+  }
+}
+
+@media (max-width: 56.99rem) {
+  .transmission {
+    width: min(100%, 28rem);
+  }
+
+  .transmission li {
+    padding-inline: 0.3rem;
+  }
 }
 
 @media (min-width: 64rem) {
@@ -105,7 +241,8 @@ body {
   }
 
   .atlas-stage {
-    block-size: clamp(27.5rem, 37vw, 34rem);
+    --plot-height: clamp(20rem, 29vw, 25rem);
+    --flow-height: 122px;
   }
 }
 
@@ -113,8 +250,10 @@ body {
   .intro {
     padding-block: clamp(1.75rem, 4vh, 2.5rem) 0.75rem;
   }
+}
 
+@media (min-width: 48rem) and (max-height: 48rem) {
   .atlas-stage {
-    block-size: clamp(18.75rem, 50vh, 26rem);
+    --plot-height: clamp(14rem, 41vh, 22rem);
   }
 }

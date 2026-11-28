@@ -1,6 +1,46 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Research on companies and markets from SuperBadBets Research."><meta name=theme-color content="#f8f5ed"><title>SuperBadBets Research</title><link rel=canonical href=https://superbadbets.com/><link rel=stylesheet href=/mono.css><script type=module src=/atlas.js></script><meta name=generator content="Hugo 0.170.1"></head><body><header class=masthead>SuperBadBets Research</header><main class=page><header class=intro><h1>The world, in types.</h1><div><p>We study companies and markets. Our notebooks show the calculations and let you try different assumptions.</p><p><a href=https://badbets.app/u/macro_ai/studies/outlook-global>Read the Global Macro Outlook</a></p></div></header><div class=atlas-stage role=img aria-label="Type relationships in the Global Macro Outlook, from model inputs to the range on a Federal Reserve decision."><canvas class=atlas-canvas aria-hidden=true></canvas><div class=atlas-nodes aria-hidden=true><span class=atlas-node data-type=global-outlook data-shape=orb data-position=-3.19,0.04,0.24 data-compact=0,-2.43,0.26 data-links=settings:extends,macro-data:uses>Global outlook</span>
-<span class=atlas-node data-type=settings data-shape=rings data-position=-1.1,-1.24,-0.2 data-compact=-1.26,-0.89,-0.04 data-links>Reader settings</span>
-<span class=atlas-node data-type=macro-data data-shape=fork data-position=-1.03,1.19,0.26 data-compact=1.26,-0.89,0.3 data-links=observation:uses>Macro observations</span>
-<span class=atlas-node data-type=observation data-shape=window data-position=0.93,1.14,0.24 data-compact=-1.29,0.74,0.25 data-links=decision:includes>Observation type</span>
-<span class=atlas-node data-type=decision data-shape=interval data-position=1.83,-0.68,-0.2 data-compact=1.29,0.71,-0.18 data-links=closed-interval:uses>Fed rate decision</span>
-<span class=atlas-node data-type=closed-interval data-shape=ruler data-position=3.28,0.13,0.1 data-compact=1.29,2.2,0.12 data-links>Closed interval</span></div></div></main></body></html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Models of costs, cash flow and capacity from SuperBadBets Research."><meta name=theme-color content="#f8f5ed"><title>SuperBadBets Research</title><link rel=canonical href=https://superbadbets.com/><link rel=preload href=/fonts/fraunces-latin.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/mono.css><script type=module src=/atlas.js></script><meta name=generator content="Hugo 0.170.1"></head><body><header class=masthead>SuperBadBets Research</header><main class=page><header class=intro><h1>The world, in types.</h1><div><p>Our first models cover Indian equities. Units, limits and dates are part of the calculation.</p><p><a href=https://badbets.app/u/geopolitics_ai/studies/outlook-routes>Read the Hormuz Study</a></p></div></header><figure class=atlas><div class=atlas-stage data-capacity='{"duration":40,"limits":[{"from":5,"rate":13,"until":23},{"from":17,"rate":7,"until":33}],"reference":20}' aria-hidden=true><canvas class=atlas-canvas></canvas><div class=atlas-legend><span class=atlas-reference><math><mi>R</mi></math></span>
+<span class=atlas-current><math><mi>q</mi><mo>(</mo><mi>t</mi><mo>)</mo></math></span>
+<span class=atlas-mean><math><mover accent="true"><mi>q</mi><mo>¯</mo></mover></math></span></div><div class=atlas-flow><div><math><msub><mi>A</mi><mi>t</mi></msub></math><span>Available supply</span></div><div><math><msub><mi>P</mi><mi>t</mi></msub></math><span>Oil price</span></div><div><math><msub><mi>D</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></math><span>Next month’s demand</span></div></div></div><figcaption class=atlas-caption><math display="block" class="capacity-equations" aria-label="In each interval, usable capacity is the minimum of the reference and active limits. Mean capacity weights each interval by its duration and lies between zero and the reference.">
+            <mtable columnalign="left">
+              <mtr>
+                <mtd><msub><mi>q</mi><mi>i</mi></msub><mo>=</mo><mi>min</mi><mo>(</mo><mo>{</mo><mi>R</mi><mo>}</mo><mo>∪</mo><msub><mi>L</mi><mi>i</mi></msub><mo>)</mo></mtd>
+              </mtr>
+              <mtr>
+                <mtd><mover accent="true"><mi>q</mi><mo>¯</mo></mover><mo>=</mo><mfrac><mrow><mo>∑</mo><msub><mi>q</mi><mi>i</mi></msub><mo>Δ</mo><msub><mi>t</mi><mi>i</mi></msub></mrow><mrow><mo>∑</mo><mo>Δ</mo><msub><mi>t</mi><mi>i</mi></msub></mrow></mfrac><mo>,</mo><mspace width="0.55em"></mspace><mn>0</mn><mo>≤</mo><mover accent="true"><mi>q</mi><mo>¯</mo></mover><mo>≤</mo><mi>R</mi></mtd>
+              </mtr>
+            </mtable>
+          </math><p><math><msub><mi>L</mi><mi>i</mi></msub></math> is the set of active limits.</p><ol class=transmission aria-label="From route capacity to next month’s demand"><li><h2>Available supply</h2><math display="block" aria-label="Net loss equals reference capacity minus mean usable capacity minus replacement. Available supply equals reference supply minus that net loss.">
+                <mtable columnalign="left">
+                  <mtr><mtd>
+                    <msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mi>R</mi><mo>−</mo><mover accent="true"><mi>q</mi><mo>¯</mo></mover><mo>−</mo><msub><mi>C</mi><mi>t</mi></msub>
+                  </mtd></mtr>
+                  <mtr><mtd>
+                    <msub><mi>A</mi><mi>t</mi></msub><mo>=</mo><msubsup><mi>A</mi><mi>t</mi><mn>0</mn></msubsup><mo>−</mo><msub><mi>S</mi><mi>t</mi></msub>
+                  </mtd></mtr>
+                </mtable>
+              </math><p>Matched replacement <math><msub><mi>C</mi><mi>t</mi></msub></math> can fill up to the route gap.</p></li><li><h2>Oil price</h2><math display="block" aria-label="The signed gap is demand minus available supply. Oil price scales the benchmark by the excess gap relative to reference demand.">
+                <mtable columnalign="left">
+                  <mtr><mtd>
+                    <msub><mi>g</mi><mi>t</mi></msub><mo>=</mo><msub><mi>D</mi><mi>t</mi></msub><mo>−</mo><msub><mi>A</mi><mi>t</mi></msub>
+                  </mtd></mtr>
+                  <mtr><mtd>
+                    <msub><mi>P</mi><mi>t</mi></msub><mo>=</mo><msubsup><mi>P</mi><mi>t</mi><mn>0</mn></msubsup>
+                    <mo>(</mo><mn>1</mn><mo>+</mo><mi>φ</mi>
+                    <mfrac>
+                      <mrow><msub><mi>g</mi><mi>t</mi></msub><mo>−</mo><msubsup><mi>g</mi><mi>t</mi><mn>0</mn></msubsup></mrow>
+                      <msubsup><mi>D</mi><mi>t</mi><mn>0</mn></msubsup>
+                    </mfrac><mo>)</mo>
+                  </mtd></mtr>
+                </mtable>
+              </math><p>Dividing the extra gap by reference demand turns a flow into a ratio.</p></li><li><h2>Next month’s demand</h2><math display="block" aria-label="Next month’s demand is its reference demand scaled by this month’s relative price change and the demand elasticity.">
+                <mtable columnalign="left">
+                  <mtr><mtd>
+                    <msub><mi>p</mi><mi>t</mi></msub><mo>=</mo><mfrac><msub><mi>P</mi><mi>t</mi></msub><msubsup><mi>P</mi><mi>t</mi><mn>0</mn></msubsup></mfrac><mo>−</mo><mn>1</mn>
+                  </mtd></mtr>
+                  <mtr><mtd>
+                    <msub><mi>D</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo>
+                    <msubsup><mi>D</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow><mn>0</mn></msubsup>
+                    <mo>(</mo><mn>1</mn><mo>+</mo><mi>ε</mi><msub><mi>p</mi><mi>t</mi></msub><mo>)</mo>
+                  </mtd></mtr>
+                </mtable>
+              </math><p class=lag>This demand goes back into the balance a month later.</p></li></ol><p>Superscript zero marks a reference value. <math><mi>φ</mi></math> and <math><mi>ε</mi></math> are reader-supplied sensitivities.</p></figcaption></figure></main></body></html>
